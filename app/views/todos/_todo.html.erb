@@ -8,6 +8,7 @@
   <div class="todo_item green">
 <% end %>
 
+
     <p class="pull-right">
 
       <% unless todo.done %>
@@ -43,17 +44,19 @@
       <% end %>
     </p>
     <h5><%= link_to todo.title, todo_path(todo) %></h5>
-    <div class="info clearfix pull-right">
+    
+     <i class=" fa fa-tags " title="categories"></i>
+    <% todo.categories.each do |category| %>
+      <span class="label label-default"><%= link_to category.name, category_path(category) %></span>
+    <% end %>
+    
+    <div class="info pull-right">
       <% unless todo.done %>
         <% if todo.deadline %>     
-          <p><%= time_left_in_words_short_version(todo.deadline) %></p>
+          <p><%= time_left_in_words_long_version(todo.deadline) %></p>
         <% end %>
       <% end %>  
       <p><%= notes_indicator(todo) %> <span class="badge"><%= todo.comments.count %></span></p>
     </div>  
-    <i class="fa fa-tags" title="categories"></i>
-    <% todo.categories.each do |category| %>
-      <span class="label label-default"><%= link_to category.name, category_path(category) %></span>
-    <% end %>
 
 </div>

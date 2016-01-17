@@ -1,14 +1,9 @@
 
-
+<% unless logged_in? %>
  <div class="jumbotron">
 
     <h1>Dogoing</h1>
-    <% if logged_in? %>
-      <%= link_to new_todo_path, class: 'btn btn-lg btn-success' do %>
-        <span class="glyphicon glyphicon-pencil" ></span> 添加项目
-      <% end %>
-    <% end %>
-    <% unless logged_in? %>
+ 
       <p>To Do List！Just Do IT！</p>
 
       <%= link_to register_path, class: 'btn btn-lg btn-primary' do %>
@@ -17,9 +12,10 @@
       <%= link_to login_path, class: 'btn btn-lg btn-success' do %>
       <span class="glyphicon glyphicon-pencil" ></span> 登录
       <% end %>
-    <% end %>
+    
 
   </div>
+<% end %>
 
 
   <% if logged_in? %>
